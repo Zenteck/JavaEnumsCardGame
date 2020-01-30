@@ -57,7 +57,15 @@ public class Game {
         int winningHand = calculateHighestHand();
 
         for (Player player: this.players){
-            if(player)
+            if(player.getHandTotal() == winningHand){
+                winningPlayers.add(player);
+            }
+        }
+
+        if(winningPlayers.size() > 1){
+            UI.displayDraw(winningPlayers);
+        }else{
+            UI.declareWinner(winningPlayers);
         }
 
     }
@@ -68,7 +76,7 @@ public class Game {
         while(this.isRunning){
 
             dealCards();
-
+            findWinners();
 
         }
     }
